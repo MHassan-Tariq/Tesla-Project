@@ -83,36 +83,39 @@ const OrderPage = () => {
   return (
     <div className="min-h-screen bg-white">
        {/* Top Banner */}
-       <div className="py-2" style={{ background: 'linear-gradient(to right, #D97706, #FCD34D, #D97706)' }}>
-         <div className="max-w-7xl mx-auto px-6">
-           <p className="text-center text-black text-sm font-medium">
-             Model Y Performance: Exterior and interior upgrades included
-           </p>
-         </div>
+      <div className="py-3" style={{ background: 'linear-gradient(to right, #e3c678 0%, #f1e3be 50%, #e3c678 100%)' }}>
+       <div className="max-w-7xl mx-auto px-6">
+         <p className="text-center text-black text-sm">
+           <span className="font-semibold">Model Y Performance:</span> <span className="font-normal">Exterior and interior upgrades included</span>
+         </p>
        </div>
+      </div>
 
           {/* Header */}
-          <header className="bg-white px-6 py-3 h-24">
+          <header className="bg-white px-8 py-2 h-14">
             <div className="max-w-7xl mx-auto flex items-center justify-between h-full">
               <Link to="/" className="flex-shrink-0">
                 <img 
                   src="/img/tesla-logo.png" 
                   alt="Tesla" 
-                  className="h-24 w-auto"
+                  className="h-4 w-auto"
                 />
               </Link>
-              <div className="flex items-center gap-2 text-gray-600">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+              <div className="flex items-center gap-2 text-gray-800">
+                {/* Globe icon styled like home navbar */}
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8"/>
+                  <path d="M3 12h18M12 3v18" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+                  <ellipse cx="12" cy="12" rx="5.5" ry="9" stroke="currentColor" strokeWidth="1.2"/>
                 </svg>
-                <span className="text-sm font-medium">US</span>
+                <span className="text-sm font-semibold">US</span>
               </div>
             </div>
           </header>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-6 py-3">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left Side - Car Image */}
           <div className="lg:col-span-2 relative">
             <div className="relative overflow-hidden rounded-lg">

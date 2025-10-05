@@ -76,18 +76,18 @@ const Navbar = () => {
       
       <nav className="fixed top-0 left-0 w-full bg-white z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-14">
             {/* Tesla Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 ml-4">
               <img 
                 src="/img/tesla-logo.png" 
                 alt="Tesla" 
-                className="h-32 w-auto"
+                className="h-4 w-auto"
               />
             </div>
 
             {/* Center Navigation Links */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-3">
               <div 
                 onMouseEnter={handleVehiclesMouseEnter}
                 onMouseLeave={handleVehiclesMouseLeave}
@@ -136,25 +136,29 @@ const Navbar = () => {
           </div>
 
             {/* Right Side Utility Icons */}
-            <div className="flex items-center space-x-6">
-              {/* Question Mark Icon */}
-              <button className="text-black hover:text-gray-600 transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <div className="flex items-center space-x-3">
+              {/* Help - circled question mark */}
+              <button className="text-black hover:text-gray-700 transition-colors">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8"/>
+                  <path d="M9.25 9.5c.35-1.1 1.7-2 2.95-2 1.65 0 2.95 1 2.95 2.35 0 1.05-.9 1.85-1.95 2.15-.7.2-1.2.75-1.2 1.4v.3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  <circle cx="12" cy="16.5" r=".9" fill="currentColor"/>
                 </svg>
               </button>
-              
-              {/* Globe Icon */}
-              <button className="text-black hover:text-gray-600 transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9" />
+              {/* Globe - circled grid */}
+              <button className="text-black hover:text-gray-700 transition-colors">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8"/>
+                  <path d="M3 12h18M12 3v18" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+                  <ellipse cx="12" cy="12" rx="5.5" ry="9" stroke="currentColor" strokeWidth="1.3"/>
                 </svg>
               </button>
-              
-              {/* Person Icon */}
-              <button className="text-black hover:text-gray-600 transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              {/* Account - circled user */}
+              <button className="text-black hover:text-gray-700 transition-colors">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8"/>
+                  <circle cx="12" cy="9" r="3" stroke="currentColor" strokeWidth="1.5"/>
+                  <path d="M6.8 17.2c1.6-2 3.9-3.2 5.2-3.2s3.6 1.2 5.2 3.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
               </button>
             </div>
