@@ -101,7 +101,7 @@ const OrderPage = () => {
                   className="h-4 w-auto"
                 />
               </Link>
-              <div className="flex items-center gap-2 text-gray-800">
+              <div className="flex items-center gap-3 text-gray-800">
                 {/* Globe icon styled like home navbar */}
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8"/>
@@ -144,7 +144,7 @@ const OrderPage = () => {
           <div className="lg:col-span-1 overflow-y-auto max-h-screen">
             <div className="space-y-8 pb-8">
               {/* Product Title */}
-              <h1 className="text-4xl lg:text-5xl font-medium text-black text-center mb-8">
+              <h1 className="text-3xl lg:text-4xl font-bold text-black text-center mb-8">
                 Model Y
               </h1>
 

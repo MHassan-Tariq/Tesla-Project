@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   const [showVehiclesDropdown, setShowVehiclesDropdown] = useState(false)
@@ -137,14 +138,14 @@ const Navbar = () => {
 
             {/* Right Side Utility Icons */}
             <div className="flex items-center space-x-3">
-              {/* Help - circled question mark */}
-              <button className="text-black hover:text-gray-700 transition-colors">
+              {/* Help - circled question mark links to internal Support page */}
+              <Link to="/support" aria-label="Support" className="text-black hover:text-gray-700 transition-colors">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8"/>
                   <path d="M9.25 9.5c.35-1.1 1.7-2 2.95-2 1.65 0 2.95 1 2.95 2.35 0 1.05-.9 1.85-1.95 2.15-.7.2-1.2.75-1.2 1.4v.3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                   <circle cx="12" cy="16.5" r=".9" fill="currentColor"/>
                 </svg>
-              </button>
+              </Link>
               {/* Globe - circled grid */}
               <button className="text-black hover:text-gray-700 transition-colors">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -183,8 +184,8 @@ const Navbar = () => {
               <div className="grid grid-cols-3 gap-6">
                 {/* Model S */}
                 <div className="text-center">
-                  <div className="w-full h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Model S Image</span>
+                  <div className="w-full h-32 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="/img/m1.png" alt="Model S" className="h-full object-contain" />
                   </div>
                   <h3 className="text-lg font-semibold text-black mb-2">Model S</h3>
                   <div className="space-x-4">
@@ -195,8 +196,8 @@ const Navbar = () => {
 
                 {/* Model 3 */}
                 <div className="text-center">
-                  <div className="w-full h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Model 3 Image</span>
+                  <div className="w-full h-32 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="/img/m2.png" alt="Model 3" className="h-full object-contain" />
                   </div>
                   <h3 className="text-lg font-semibold text-black mb-2">Model 3</h3>
                   <div className="space-x-4">
@@ -207,8 +208,8 @@ const Navbar = () => {
 
                 {/* Model Y */}
                 <div className="text-center">
-                  <div className="w-full h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Model Y Image</span>
+                  <div className="w-full h-32 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="/img/m3.png" alt="Model Y" className="h-full object-contain" />
                   </div>
                   <h3 className="text-lg font-semibold text-black mb-2">Model Y</h3>
                   <div className="space-x-4">
@@ -219,8 +220,8 @@ const Navbar = () => {
 
                 {/* Model X */}
                 <div className="text-center">
-                  <div className="w-full h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Model X Image</span>
+                  <div className="w-full h-32 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="/img/m4.png" alt="Model X" className="h-full object-contain" />
                   </div>
                   <h3 className="text-lg font-semibold text-black mb-2">Model X</h3>
                   <div className="space-x-4">
@@ -231,8 +232,8 @@ const Navbar = () => {
 
                 {/* Cybertruck */}
                 <div className="text-center">
-                  <div className="w-full h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Cybertruck Image</span>
+                  <div className="w-full h-32 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="/img/m5.png" alt="Cybertruck" className="h-full object-contain" />
                   </div>
                   <h3 className="text-lg font-semibold text-black mb-2">Cybertruck</h3>
                   <div className="space-x-4">
@@ -243,8 +244,8 @@ const Navbar = () => {
 
                 {/* Inventory */}
                 <div className="text-center">
-                  <div className="w-full h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Inventory Image</span>
+                  <div className="w-full h-32 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="/img/m6.png" alt="Inventory" className="h-full object-contain" />
                   </div>
                   <h3 className="text-lg font-semibold text-black mb-2">Inventory</h3>
                   <div className="space-x-4">
@@ -293,8 +294,8 @@ const Navbar = () => {
               <div className="grid grid-cols-2 gap-6">
                 {/* Solar Panels */}
                 <div className="text-center">
-                  <div className="w-full h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Solar Panels Image</span>
+                  <div className="w-full h-32 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="/img/e1.png" alt="Solar Panels" className="h-full object-contain" />
                   </div>
                   <h3 className="text-lg font-semibold text-black mb-2">Solar Panels</h3>
                   <div className="space-x-4">
@@ -305,8 +306,8 @@ const Navbar = () => {
 
                 {/* Solar Roof */}
                 <div className="text-center">
-                  <div className="w-full h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Solar Roof Image</span>
+                  <div className="w-full h-32 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="/img/e2.png" alt="Solar Roof" className="h-full object-contain" />
                   </div>
                   <h3 className="text-lg font-semibold text-black mb-2">Solar Roof</h3>
                   <div className="space-x-4">
@@ -317,8 +318,8 @@ const Navbar = () => {
 
                 {/* Powerwall */}
                 <div className="text-center">
-                  <div className="w-full h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Powerwall Image</span>
+                  <div className="w-full h-32 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="/img/e3.png" alt="Powerwall" className="h-full object-contain" />
                   </div>
                   <h3 className="text-lg font-semibold text-black mb-2">Powerwall</h3>
                   <div className="space-x-4">
@@ -329,8 +330,8 @@ const Navbar = () => {
 
                 {/* Megapack */}
                 <div className="text-center">
-                  <div className="w-full h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Megapack Image</span>
+                  <div className="w-full h-32 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="/img/e4.png" alt="Megapack" className="h-full object-contain" />
                   </div>
                   <h3 className="text-lg font-semibold text-black mb-2">Megapack</h3>
                   <div className="space-x-4">
@@ -373,8 +374,8 @@ const Navbar = () => {
               <div className="grid grid-cols-2 gap-6">
                 {/* Wall Connector */}
                 <div className="text-center">
-                  <div className="w-full h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Wall Connector Image</span>
+                  <div className="w-full h-32 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="/img/c1.jpeg" alt="Wall Connector" className="h-full object-contain" />
                   </div>
                   <h3 className="text-lg font-semibold text-black mb-2">Wall Connector</h3>
                   <div className="space-x-4">
@@ -385,8 +386,8 @@ const Navbar = () => {
 
                 {/* Mobile Connector */}
                 <div className="text-center">
-                  <div className="w-full h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Mobile Connector Image</span>
+                  <div className="w-full h-32 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="/img/c2.jpeg" alt="Mobile Connector" className="h-full object-contain" />
                   </div>
                   <h3 className="text-lg font-semibold text-black mb-2">Mobile Connector</h3>
                   <div className="space-x-4">
@@ -397,8 +398,8 @@ const Navbar = () => {
 
                 {/* Supercharger */}
                 <div className="text-center">
-                  <div className="w-full h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Supercharger Image</span>
+                  <div className="w-full h-32 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="/img/c3.png" alt="Supercharger" className="h-full object-contain" />
                   </div>
                   <h3 className="text-lg font-semibold text-black mb-2">Supercharger</h3>
                   <div className="space-x-4">
@@ -409,8 +410,8 @@ const Navbar = () => {
 
                 {/* Destination Charging */}
                 <div className="text-center">
-                  <div className="w-full h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Destination Charging Image</span>
+                  <div className="w-full h-32 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="/img/c4.png" alt="Destination Charging" className="h-full object-contain" />
                   </div>
                   <h3 className="text-lg font-semibold text-black mb-2">Destination Charging</h3>
                   <div className="space-x-4">
@@ -488,71 +489,58 @@ const Navbar = () => {
       </div>
 
       {/* Shop Dropdown */}
-      <div 
-        className={`fixed top-16 left-0 w-full bg-white z-40 shadow-lg border-t border-gray-200 transition-all duration-300 ease-in-out ${
-          showShopDropdown 
-            ? 'opacity-100 transform translate-y-0' 
-            : 'opacity-0 transform -translate-y-full pointer-events-none'
+      <div
+        className={`fixed top-16 left-0 w-full bg-white z-40 shadow-lg border-t border-gray-200 transition-all duration-200 ease-out ${
+          showShopDropdown ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'
         }`}
         onMouseEnter={handleShopMouseEnter}
         onMouseLeave={handleShopMouseLeave}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex">
-            {/* Left Section - Product Categories */}
-            <div className="flex-1 pr-8">
-              <div className="grid grid-cols-2 gap-8">
-                {/* Charging */}
-                <div className="text-center">
-                  <div className="w-full h-40 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Wall Connector Image</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-black mb-3">Charging</h3>
-                  <a href="#" className="text-sm text-black underline hover:no-underline">Shop Now</a>
-                </div>
+        <div className="max-w-5xl mx-auto px-8 py-10">
+          {/* Four categories centered like Tesla */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-14 items-start text-center">
+            {/* Charging */}
+            <a href="#" className="group">
+              <img
+                src="/img/s1.jpeg"
+                alt="Charging"
+                className="mx-auto w-28 h-28 md:w-36 md:h-36 object-contain transform transition duration-200 group-hover:scale-105"
+              />
+              <div className="mt-4 text-lg md:text-xl font-semibold text-gray-900 group-hover:underline">Charging</div>
+            </a>
 
-                {/* Vehicle Accessories */}
-                <div className="text-center">
-                  <div className="w-full h-40 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Tesla Wheel Image</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-black mb-3">Vehicle Accessories</h3>
-                  <a href="#" className="text-sm text-black underline hover:no-underline">Shop Now</a>
-                </div>
+            {/* Vehicle Accessories */}
+            <a href="#" className="group">
+              <img
+                src="/img/s2.jpeg"
+                alt="Vehicle Accessories"
+                className="mx-auto w-28 h-28 md:w-36 md:h-36 object-contain transform transition duration-200 group-hover:scale-105"
+              />
+              <div className="mt-4 text-lg md:text-xl font-semibold text-gray-900 group-hover:underline">Vehicle Accessories</div>
+            </a>
 
-                {/* Apparel */}
-                <div className="text-center">
-                  <div className="w-full h-40 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Tesla Cap Image</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-black mb-3">Apparel</h3>
-                  <a href="#" className="text-sm text-black underline hover:no-underline">Shop Now</a>
-                </div>
+            {/* Apparel */}
+            <a href="#" className="group">
+              <img
+                src="/img/s3.png"
+                alt="Apparel"
+                className="mx-auto w-28 h-28 md:w-36 md:h-36 object-contain transform transition duration-200 group-hover:scale-105"
+              />
+              <div className="mt-4 text-lg md:text-xl font-semibold text-gray-900 group-hover:underline">Apparel</div>
+            </a>
 
-                {/* Lifestyle */}
-                <div className="text-center">
-                  <div className="w-full h-40 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Tesla Backpack Image</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-black mb-3">Lifestyle</h3>
-                  <a href="#" className="text-sm text-black underline hover:no-underline">Shop Now</a>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Section - Additional Options */}
-            <div className="w-80 border-l border-gray-200 pl-8">
-              <div className="space-y-4">
-                <a href="#" className="block text-base text-black font-medium hover:text-gray-600 transition-colors">Gift Cards</a>
-                <a href="#" className="block text-base text-black font-medium hover:text-gray-600 transition-colors">Electronics</a>
-                <a href="#" className="block text-base text-black font-medium hover:text-gray-600 transition-colors">Home</a>
-                <a href="#" className="block text-base text-black font-medium hover:text-gray-600 transition-colors">Kids</a>
-                <a href="#" className="block text-base text-black font-medium hover:text-gray-600 transition-colors">Outdoor</a>
-              </div>
-            </div>
+            {/* Lifestyle */}
+            <a href="#" className="group">
+              <img
+                src="/img/s4.jpeg"
+                alt="Lifestyle"
+                className="mx-auto w-28 h-28 md:w-36 md:h-36 object-contain transform transition duration-200 group-hover:scale-105"
+              />
+              <div className="mt-4 text-lg md:text-xl font-semibold text-gray-900 group-hover:underline">Lifestyle</div>
+            </a>
           </div>
         </div>
-    </div>
+      </div>
     </>
   )
 }

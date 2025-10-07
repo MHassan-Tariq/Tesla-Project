@@ -1,117 +1,57 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 const EnergyCarousel = () => {
-  const [currentSlide, setCurrentSlide] = useState(0)
-
   const slides = [
     {
       id: 1,
-      title: "Solar Panels",
-      subtitle: "Use Solar Energy to Power Your Home and Charge Your Tesla",
-      image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      primaryButton: "Order Now",
-      secondaryButton: "Learn More"
+      title: 'Solar Panels',
+      subtitle: 'Use Solar Energy to Power Your Home and Charge Your Tesla',
+      image: '/img/h11.jpeg',
     },
     {
       id: 2,
-      title: "Powerwall",
-      subtitle: "Keep Your Lights On During Outages",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      primaryButton: "Order Now",
-      secondaryButton: "Learn More"
+      title: 'Powerwall',
+      subtitle: 'Keep Your Lights On During Outages',
+      image: '/img/h12.jpeg',
     },
     {
       id: 3,
-      title: "Solar Roof",
-      subtitle: "Transform Your Roof Into a Solar Energy System",
-      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      primaryButton: "Order Now",
-      secondaryButton: "Learn More"
+      title: 'Solar Roof',
+      subtitle: 'Generate Clean Energy With Your Roof',
+      image: '/img/h13.jpeg',
     },
     {
       id: 4,
-      title: "Megapack",
-      subtitle: "Utility-Scale Energy Storage for Grid Stability",
-      image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      primaryButton: "Order Now",
-      secondaryButton: "Learn More"
-    }
+      title: 'Megapack',
+      subtitle: 'Massive Batteries for Massive Energy Support',
+      image: '/img/h14.jpg',
+    },
   ]
-
-  // Auto-play functionality
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 3000)
-
-    return () => clearInterval(interval)
-  }, [slides.length])
-
-  const goToSlide = (index) => {
-    setCurrentSlide(index)
-  }
 
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative">
-          {/* Carousel Container */}
-          <div className="relative overflow-hidden rounded-lg">
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 75}%)` }}
-            >
-              {slides.map((slide) => (
-                <div key={slide.id} className="w-3/4 flex-shrink-0 relative mr-4">
-                  {/* Background Image */}
-                  <div className="relative h-96 lg:h-[500px]">
-                    <img 
-                      src={slide.image}
-                      alt={slide.title}
-                      className="w-full h-full object-cover"
-                    />
-                    
-                    {/* Dark Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    
-                    {/* Content Overlay - Bottom Left */}
-                    <div className="absolute bottom-8 left-8 z-10 text-white max-w-md">
-                      <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-                        {slide.title}
-                      </h2>
-                      <p className="text-lg lg:text-xl mb-6 text-gray-100">
-                        {slide.subtitle}
-                      </p>
-                      
-                       {/* Buttons */}
-                       <div className="flex gap-4">
-                         <button className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors">
-                           {slide.primaryButton}
-                         </button>
-                         <button className="bg-white text-gray-900 px-8 py-3 rounded-lg text-lg font-semibold border border-gray-300 hover:bg-gray-50 transition-colors">
-                           {slide.secondaryButton}
-                         </button>
-                       </div>
+          {/* Horizontal slider (scroll) that snaps; becomes 4-cols on large screens */}
+          <div className="flex lg:grid lg:grid-cols-4 gap-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory scroll-smooth px-1 -mx-1">
+            {slides.map((slide) => (
+              <article
+                key={slide.id}
+                className="snap-start w-[80%] sm:w-1/2 lg:w-auto flex-shrink-0"
+              >
+                <div className="relative h-96 lg:h-[500px] rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
+                  <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  <div className="absolute bottom-8 left-8 right-8 text-white">
+                    <h3 className="text-3xl lg:text-4xl font-semibold tracking-tight">{slide.title}</h3>
+                    <p className="mt-2 text-sm lg:text-base text-gray-200 max-w-md">{slide.subtitle}</p>
+                    <div className="mt-6 flex gap-4">
+                      <a href="/order" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg text-sm lg:text-base font-semibold transition-colors">Order Now</a>
+                      <a href="/learn" className="bg-white text-gray-900 px-6 py-2 rounded-lg text-sm lg:text-base font-semibold border border-gray-300 hover:bg-gray-50 transition-colors">Learn More</a>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-
-          {/* Pagination Dots */}
-          <div className="flex justify-center mt-6 space-x-2">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                  index === currentSlide 
-                    ? 'bg-gray-800' 
-                    : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-              />
+              </article>
             ))}
           </div>
         </div>

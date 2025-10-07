@@ -8,7 +8,7 @@ const ChargingNetworkSection = () => {
         <div className="relative mb-16">
           <div className="relative rounded-lg overflow-hidden shadow-sm">
             <img 
-              src="https://images.unsplash.com/photo-1519302959554-a75be0afc82a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+              src="/img/h10.jpg"
               alt="Tesla Charging Network Map" 
               className="w-full h-96 object-cover"
             />

@@ -24,7 +24,7 @@ const PromotionalCards = () => {
               {/* Image Content - Right Side */}
               <div className="w-2/5">
                 <img 
-                  src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="/img/h6.jpg"
                   alt="Tesla Vehicles"
                   className="w-full h-full object-cover"
                 />
@@ -51,8 +51,8 @@ const PromotionalCards = () => {
               {/* Image Content - Right Side */}
               <div className="w-2/5">
                 <img 
-                  src="https://images.unsplash.com/photo-1549317336-206569e8475c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Tesla Semi"
+                  src="/img/h7.jpg"
+                  alt="Shareholder Meeting"
                   className="w-full h-full object-cover"
                 />
               </div>

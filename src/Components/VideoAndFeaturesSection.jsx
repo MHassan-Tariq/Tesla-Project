@@ -6,10 +6,10 @@ const VideoAndFeaturesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Section: Full Self-Driving Video (2/3 width) */}
-          <div className="lg:col-span-2 relative bg-gray-200 rounded-lg overflow-hidden shadow-sm h-[500px]">
+          <div className="lg:col-span-2 relative rounded-lg overflow-hidden shadow-sm h-[500px]">
             {/* Background Image/Video */}
             <img 
-              src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+              src="/img/h8.jpg"
               alt="Full Self-Driving (Supervised)" 
               className="absolute inset-0 w-full h-full object-cover"
             />
@@ -43,10 +43,10 @@ const VideoAndFeaturesSection = () => {
           </div>
 
           {/* Right Section: Features That Come Standard (1/3 width) */}
-          <div className="lg:col-span-1 relative bg-gray-200 rounded-lg overflow-hidden shadow-sm h-[500px]">
+          <div className="lg:col-span-1 relative rounded-lg overflow-hidden shadow-sm h-[500px]">
             {/* Background Image */}
             <img 
-              src="https://images.unsplash.com/photo-1549317336-206569e8475c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              src="/img/h9.jpeg"
               alt="Features That Come Standard" 
               className="absolute inset-0 w-full h-full object-cover"
             />

@@ -10,6 +10,8 @@ import ChargingNetworkSection from './Components/ChargingNetworkSection'
 import EnergyCarousel from './Components/EnergyCarousel'
 import Footer from './Components/Footer'
 import OrderPage from './Pages/OrderPage'
+import LearnPage from './Pages/LearnPage'
+import Support from './Pages/Support'
 
 const HomePage = () => {
   return (
@@ -34,6 +36,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/order" element={<OrderPage />} />
+            <Route path="/learn" element={<LearnPage />} />
+            <Route path="/support" element={<Support />} />
       </Routes>
     </Router>
   )
