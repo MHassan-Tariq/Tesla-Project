@@ -3,7 +3,7 @@ import Navbar from '../Components/Navbar'
 
 const Support = () => {
   const heroBg = {
-    backgroundImage: "url('/HEROIMG.png')",
+    backgroundImage: "url('/img/support1.jpeg')",
   }
 
   const topics = [
@@ -214,8 +214,8 @@ const Support = () => {
           {/* Row 1 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
             <img
-              src="/img/image_2024-06-05_173035533.webp"
-              alt="Tesla app video guides"
+              src="/img/support2.jpeg"
+              alt="Support visuals"
               className="w-full rounded-lg object-cover"
             />
             <div>
@@ -256,8 +256,8 @@ const Support = () => {
               </ul>
             </div>
             <img
-              src="/img/image_2024-06-05_173453040.webp"
-              alt="Tesla parking lot"
+              src="/img/support3.jpeg"
+              alt="Support info"
               className="order-1 md:order-2 w-full rounded-lg object-cover"
             />
           </div>
