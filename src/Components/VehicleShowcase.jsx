@@ -57,7 +57,7 @@ const VehicleShowcase = () => {
 
   return (
     <section className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Vehicle Cards Container */}
         <div className="relative">
           <div className="relative overflow-hidden rounded-lg">
@@ -65,46 +65,35 @@ const VehicleShowcase = () => {
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-              {vehicleCards.map((vehicle, index) => {
-                const nextIndex = (index + 1) % vehicleCards.length
-                const nextVehicle = vehicleCards[nextIndex]
+              {vehicleCards.map((vehicle) => {
                 return (
-                  <div key={vehicle.id} className="w-full flex-shrink-0 pl-4 pr-0">
-                    <div className="flex gap-6 justify-between items-stretch">
-                      {/* Full card (2/3 width) */}
-                      <div className="w-2/3">
-                        <div className="relative bg-white rounded-lg shadow-lg overflow-hidden">
+                  <div key={vehicle.id} className="w-full flex-shrink-0 pr-0">
+                    <div className="flex flex-col gap-4 justify-between items-stretch">
+                      {/* Single full-width card */}
+                      <div className="w-full">
+                        <div className="relative bg-white rounded-3xl shadow-2xl border border-black/5 overflow-hidden">
                           <div
-                            className="w-full h-96 bg-cover bg-center bg-no-repeat"
+                            className="w-full h-[430px] sm:h-[520px] bg-cover bg-center bg-no-repeat"
                             style={{ backgroundImage: `url('${vehicle.image}')` }}
                           >
-                            <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" />
+                            <div className="absolute inset-0 p-4 sm:p-8 pb-5 sm:pb-8 flex flex-col justify-between">
                               <div className="text-left">
-                                <p className="text-white text-lg font-normal">{vehicle.category}</p>
+                                <span className="inline-block text-[11px] sm:text-xs font-semibold text-white bg-black/70 rounded-md px-2 py-1 shadow">
+                                  {`New ${vehicle.category}`}
+                                </span>
                               </div>
                               <div className="text-left">
-                                <h2 className="text-white text-5xl font-bold mb-2">{vehicle.model}</h2>
-                                <p className="text-white text-xl font-normal mb-6 underline decoration-white decoration-1 underline-offset-4">{vehicle.apr}</p>
-                                <div className="flex gap-4">
-                                  <Link to="/order" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-base font-medium transition-colors">Order Now</Link>
-                                  <Link to="/learn" className="bg-white hover:bg-gray-100 text-gray-800 px-6 py-3 rounded-lg text-base font-medium border border-gray-300 transition-colors">Learn More</Link>
+                                <h2 className="text-white text-[32px] sm:text-5xl font-bold mb-3 leading-tight">
+                                  {vehicle.model}
+                                  <br className="sm:hidden" />
+                                  <span className="sm:hidden block">Standard</span>
+                                </h2>
+                                <p className="hidden sm:block text-white text-xl font-normal mb-6 underline decoration-white decoration-1 underline-offset-4">{vehicle.apr}</p>
+                                <div className="flex gap-3 sm:gap-4">
+                                  <Link to="/order" className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-colors shadow">Order Now</Link>
+                                  <Link to="/learn" className="bg-white hover:bg-gray-100 text-gray-900 px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg text-sm sm:text-base font-semibold border border-gray-300 transition-colors shadow">Learn More</Link>
                                 </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Peek card (1/3 width) */}
-                      <div className="w-1/3 ml-auto">
-                        <div className="relative bg-white rounded-lg shadow-lg overflow-hidden">
-                          <div
-                            className="w-full h-96 bg-cover bg-center bg-no-repeat"
-                            style={{ backgroundImage: `url('${nextVehicle.image}')` }}
-                          >
-                            <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                              <div className="text-left">
-                                <h3 className="text-white text-3xl font-bold">{nextVehicle.model}</h3>
                               </div>
                             </div>
                           </div>
@@ -118,15 +107,15 @@ const VehicleShowcase = () => {
           </div>
 
           {/* Pagination Dots */}
-          <div className="flex justify-center mt-8 space-x-2">
+          <div className="flex justify-center mt-4 sm:mt-8 space-x-1.5">
             {vehicleCards.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${
                   index === currentSlide 
                     ? 'bg-gray-800' 
-                    : 'bg-gray-300 hover:bg-gray-400'
+                    : 'bg-gray-400/70 hover:bg-gray-500'
                 }`}
               />
             ))}

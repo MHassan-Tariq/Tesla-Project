@@ -5,14 +5,13 @@ const ChargingNetworkSection = () => {
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Map Section */}
-        <div className="relative mb-16">
+        <div className="relative mb-10 lg:mb-16">
           <div className="relative rounded-lg overflow-hidden shadow-sm">
             <img 
               src="/img/h10.jpg"
               alt="Tesla Charging Network Map" 
-              className="w-full h-96 object-cover"
+              className="w-full h-64 sm:h-96 object-cover"
             />
-            
             {/* Find Me Button - Bottom Left */}
             <div className="absolute bottom-4 left-4">
               <button className="bg-white text-black px-4 py-2 rounded-lg shadow-lg hover:bg-gray-50 transition-colors flex items-center gap-2">
@@ -22,7 +21,6 @@ const ChargingNetworkSection = () => {
                 Find Me
               </button>
             </div>
-            
             {/* Zoom Control Button - Bottom Right */}
             <div className="absolute bottom-4 right-4">
               <button className="bg-gray-200 text-gray-600 w-10 h-10 rounded-full shadow-lg hover:bg-gray-300 transition-colors flex items-center justify-center">
@@ -35,30 +33,30 @@ const ChargingNetworkSection = () => {
         </div>
 
         {/* Content Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mx-8 lg:mx-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
           {/* Left Column: Title, Subtitle, and Buttons */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             <div>
-              <h2 className="text-5xl font-semibold text-black mb-6">
+              <h2 className="text-4xl sm:text-5xl font-semibold text-black">
                 Find Your Charge
               </h2>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="mt-2 text-[13px] sm:text-base text-gray-600 max-w-xl">
                 View the network of Tesla Superchargers and Destination Chargers available near you.
               </p>
             </div>
             
-            <div className="flex gap-4">
-              <button className="bg-gray-800 text-white px-8 py-2 rounded-lg text-lg font-medium hover:bg-gray-700 transition-colors">
+            <div className="mt-4 flex gap-4">
+              <button className="bg-[#171717] text-white px-5 py-2.5 rounded-md text-sm sm:text-base font-semibold hover:bg-black transition-colors">
                 View Network
               </button>
-              <button className="bg-white text-black px-8 py-2 rounded-lg text-lg font-medium border border-gray-300 hover:bg-gray-50 transition-colors">
+              <button className="bg-[#f2f2f2] text-[#171717] px-5 py-2.5 rounded-md text-sm sm:text-base font-semibold hover:bg-[#e9e9e9] transition-colors">
                 Learn More
               </button>
             </div>
           </div>
 
-          {/* Right Column: Stats */}
-          <div className="flex justify-between">
+          {/* Right Column: Stats (hidden on mobile to match reference) */}
+          <div className="hidden lg:flex justify-between">
             {/* Superchargers Stat */}
             <div className="text-center">
               <div className="flex items-center justify-center gap-3 mb-3">

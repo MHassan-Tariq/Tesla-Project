@@ -81,7 +81,7 @@ const OrderPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
        {/* Top Banner */}
       <div className="py-3" style={{ background: 'linear-gradient(to right, #e3c678 0%, #f1e3be 50%, #e3c678 100%)' }}>
        <div className="max-w-7xl mx-auto px-6">
@@ -122,7 +122,7 @@ const OrderPage = () => {
               <img 
                 src={carImages[currentImage]}
                 alt="Tesla Model Y"
-                className="w-full h-[500px] lg:h-[600px] object-cover"
+                className="block w-full max-w-full h-72 sm:h-[500px] lg:h-[600px] object-cover object-center"
               />
               
               {/* Image Indicators */}

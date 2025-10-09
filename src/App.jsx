@@ -15,9 +15,9 @@ import Support from './Pages/Support'
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-transparent overflow-x-hidden">
       <Navbar />
-      <main className="flex-1 pt-14">
+      <main className="flex-1 pt-14 overflow-x-hidden">
         <Hero />
         <VehicleShowcase />
         <PromotionalCards />
