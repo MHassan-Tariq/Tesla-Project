@@ -10,14 +10,14 @@ const Hero = () => {
           src="/img/home-page image.png" 
           alt="Tesla Model 3" 
           className="w-full h-full object-cover object-center"
-          style={{ objectPosition: 'center 45%' }}
+          style={{ objectPosition: 'center 35%' }}
         />
         {/* Subtle gradient for text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
       </div>
 
       {/* Text Overlay */}
-      <div className="absolute inset-0 flex flex-col items-center justify-start pt-16 sm:pt-24 z-20">
+      <div className="absolute inset-0 flex flex-col items-center justify-start pt-20 sm:pt-24 z-20">
         <div className="text-center px-4">
           {/* Main Title */}
           <h1 className="text-4xl md:text-5xl font-semibold text-white mb-1 tracking-tight">
