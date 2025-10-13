@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import MobileMenu from './MobileMenu'
 
@@ -9,6 +9,8 @@ const Navbar = () => {
   const [showDiscoverDropdown, setShowDiscoverDropdown] = useState(false)
   const [showShopDropdown, setShowShopDropdown] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [showLanguageDropdown, setShowLanguageDropdown] = useState(false)
+  const [languageTimeout, setLanguageTimeout] = useState(null)
 
   const handleVehiclesMouseEnter = () => {
     setShowVehiclesDropdown(true)
@@ -16,6 +18,7 @@ const Navbar = () => {
     setShowChargingDropdown(false)
     setShowDiscoverDropdown(false)
     setShowShopDropdown(false)
+    setShowLanguageDropdown(false)
   }
 
   const handleVehiclesMouseLeave = () => {
@@ -28,6 +31,7 @@ const Navbar = () => {
     setShowChargingDropdown(false)
     setShowDiscoverDropdown(false)
     setShowShopDropdown(false)
+    setShowLanguageDropdown(false)
   }
 
   const handleEnergyMouseLeave = () => {
@@ -40,6 +44,7 @@ const Navbar = () => {
     setShowEnergyDropdown(false)
     setShowDiscoverDropdown(false)
     setShowShopDropdown(false)
+    setShowLanguageDropdown(false)
   }
 
   const handleChargingMouseLeave = () => {
@@ -52,6 +57,7 @@ const Navbar = () => {
     setShowEnergyDropdown(false)
     setShowChargingDropdown(false)
     setShowShopDropdown(false)
+    setShowLanguageDropdown(false)
   }
 
   const handleDiscoverMouseLeave = () => {
@@ -64,16 +70,46 @@ const Navbar = () => {
     setShowEnergyDropdown(false)
     setShowChargingDropdown(false)
     setShowDiscoverDropdown(false)
+    setShowLanguageDropdown(false)
   }
 
   const handleShopMouseLeave = () => {
     setShowShopDropdown(false)
   }
 
+  const handleLanguageMouseEnter = () => {
+    if (languageTimeout) {
+      clearTimeout(languageTimeout)
+      setLanguageTimeout(null)
+    }
+    setShowLanguageDropdown(true)
+    setShowVehiclesDropdown(false)
+    setShowEnergyDropdown(false)
+    setShowChargingDropdown(false)
+    setShowDiscoverDropdown(false)
+    setShowShopDropdown(false)
+  }
+
+  const handleLanguageMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setShowLanguageDropdown(false)
+    }, 100) // Small delay to prevent immediate closing
+    setLanguageTimeout(timeout)
+  }
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (languageTimeout) {
+        clearTimeout(languageTimeout)
+      }
+    }
+  }, [languageTimeout])
+
   return (
     <>
       {/* Background Blur Overlay */}
-      {(showVehiclesDropdown || showEnergyDropdown || showChargingDropdown || showDiscoverDropdown || showShopDropdown) && (
+      {(showVehiclesDropdown || showEnergyDropdown || showChargingDropdown || showDiscoverDropdown || showShopDropdown || showLanguageDropdown) && (
         <div className="fixed inset-0 backdrop-blur-sm z-30"></div>
       )}
       
@@ -169,21 +205,27 @@ const Navbar = () => {
                 </svg>
               </Link>
               {/* Globe - circled grid */}
-              <button className="text-black hover:text-gray-700 transition-colors">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8"/>
-                  <path d="M3 12h18M12 3v18" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
-                  <ellipse cx="12" cy="12" rx="5.5" ry="9" stroke="currentColor" strokeWidth="1.3"/>
-                </svg>
-              </button>
+              <div 
+                onMouseEnter={handleLanguageMouseEnter}
+                onMouseLeave={handleLanguageMouseLeave}
+                className="relative"
+              >
+                <button className="text-black hover:text-gray-700 transition-colors px-3 py-2 rounded-md hover:bg-gray-100">
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8"/>
+                    <path d="M3 12h18M12 3v18" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+                    <ellipse cx="12" cy="12" rx="5.5" ry="9" stroke="currentColor" strokeWidth="1.3"/>
+                  </svg>
+                </button>
+              </div>
               {/* Account - circled user */}
-              <button className="text-black hover:text-gray-700 transition-colors">
+              <Link to="/signin" className="text-black hover:text-gray-700 transition-colors">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8"/>
                   <circle cx="12" cy="9" r="3" stroke="currentColor" strokeWidth="1.5"/>
                   <path d="M6.8 17.2c1.6-2 3.9-3.2 5.2-3.2s3.6 1.2 5.2 3.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -565,11 +607,181 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Language Dropdown */}
+      <div 
+        className={`fixed top-14 left-0 w-full bg-white z-40 shadow-lg border-t border-gray-200 transition-all duration-300 ease-in-out ${
+          showLanguageDropdown 
+            ? 'opacity-100 transform translate-y-0' 
+            : 'opacity-0 transform -translate-y-full pointer-events-none'
+        }`}
+        onMouseEnter={() => {
+          if (languageTimeout) {
+            clearTimeout(languageTimeout)
+            setLanguageTimeout(null)
+          }
+        }}
+        onMouseLeave={handleLanguageMouseLeave}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* North America */}
+            <div className="space-y-2">
+              <h3 className="font-semibold text-lg text-gray-900 mt-4 mb-2">North America</h3>
+              <div className="space-y-1">
+                <button className="w-full text-left px-3 py-2 rounded-md bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">United States</div>
+                  <div className="text-sm text-gray-500">English</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Canada</div>
+                  <div className="text-sm text-gray-500">English</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Canada</div>
+                  <div className="text-sm text-gray-500">Français</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Mexico</div>
+                  <div className="text-sm text-gray-500">Español</div>
+                </button>
+              </div>
+            </div>
+
+            {/* Asia Pacific */}
+            <div className="space-y-2">
+              <h3 className="font-semibold text-lg text-gray-900 mt-4 mb-2">Asia Pacific</h3>
+              <div className="space-y-1">
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Australia</div>
+                  <div className="text-sm text-gray-500">English</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">China</div>
+                  <div className="text-sm text-gray-500">中文</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Hong Kong</div>
+                  <div className="text-sm text-gray-500">English</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">India</div>
+                  <div className="text-sm text-gray-500">English</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Japan</div>
+                  <div className="text-sm text-gray-500">日本語</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">New Zealand</div>
+                  <div className="text-sm text-gray-500">English</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Singapore</div>
+                  <div className="text-sm text-gray-500">English</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">South Korea</div>
+                  <div className="text-sm text-gray-500">한국어</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Taiwan</div>
+                  <div className="text-sm text-gray-500">中文</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Thailand</div>
+                  <div className="text-sm text-gray-500">ไทย</div>
+                </button>
+              </div>
+            </div>
+
+            {/* Europe */}
+            <div className="space-y-2">
+              <h3 className="font-semibold text-lg text-gray-900 mt-4 mb-2">Europe</h3>
+              <div className="space-y-1">
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Austria</div>
+                  <div className="text-sm text-gray-500">Deutsch</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Belgium</div>
+                  <div className="text-sm text-gray-500">Nederlands</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Belgium</div>
+                  <div className="text-sm text-gray-500">Français</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Denmark</div>
+                  <div className="text-sm text-gray-500">Dansk</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Finland</div>
+                  <div className="text-sm text-gray-500">Suomi</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">France</div>
+                  <div className="text-sm text-gray-500">Français</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Germany</div>
+                  <div className="text-sm text-gray-500">Deutsch</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Ireland</div>
+                  <div className="text-sm text-gray-500">English</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Italy</div>
+                  <div className="text-sm text-gray-500">Italiano</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Luxembourg</div>
+                  <div className="text-sm text-gray-500">Français</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Netherlands</div>
+                  <div className="text-sm text-gray-500">Nederlands</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Norway</div>
+                  <div className="text-sm text-gray-500">Norsk</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Portugal</div>
+                  <div className="text-sm text-gray-500">Português</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Spain</div>
+                  <div className="text-sm text-gray-500">Español</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Sweden</div>
+                  <div className="text-sm text-gray-500">Svenska</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Switzerland</div>
+                  <div className="text-sm text-gray-500">Deutsch</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">Switzerland</div>
+                  <div className="text-sm text-gray-500">Français</div>
+                </button>
+                <button className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+                  <div className="text-gray-900">United Kingdom</div>
+                  <div className="text-sm text-gray-500">English</div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Mobile Menu */}
       <MobileMenu 
         isOpen={isMobileMenuOpen} 
         onClose={() => setIsMobileMenuOpen(false)} 
       />
+
     </>
   )
 }
